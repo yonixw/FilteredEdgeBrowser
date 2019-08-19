@@ -1,0 +1,24 @@
+﻿+ Options in policy:
+
+Per domain:
+- Allow only in browser
+- Allowed in proxy (so also in webbrowser)
+- Allowed to be referrer
+
+In mitm:
+-Every request should have exe fullpath
+
+Add to filtering:
+-Program + Users whitelist (not diverted)
+
+Addressbar is blocked, suggestion in new window (diaglof-singleton)
+Current address to change
+History thread (from append log)
+Bookmark thread (form some append log)
+HTTP \ HTTPS
+Google suggestion
+If not HTTP\s :
+	if domain :
+		add https
+	else
+		google it
