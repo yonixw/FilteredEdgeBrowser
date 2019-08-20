@@ -12,7 +12,17 @@ namespace FilteredEdgeBrowser
 {
     public partial class MyWebTab : UserControl
     {
-        LocalHistoryManager myHistory = new LocalHistoryManager(); 
+        TabPage myPage;
+        LocalHistoryManager myHistory = new LocalHistoryManager();
+
+        public delegate void titleEvent(TabPage page, string title);
+        public event titleEvent onTitleChange;
+
+        public delegate void historyEvent(string title, string url);
+        public event historyEvent onHistoryEvent;
+
+        public delegate void bookmarkEvent(string name, string url);
+        public event bookmarkEvent onBookmarkEvent;
 
         public MyWebTab()
         {
@@ -36,6 +46,16 @@ namespace FilteredEdgeBrowser
             lblStatus.Text = string.Format("[{0}] {1}", DateTime.Now, text);
         }
 
+        public void setMyPage(TabPage page)
+        {
+            myPage = page;
+        }
+
+        public void closePage()
+        {
+            wvMain.Dispose();
+        }
+
         private void WvMain_NewWindowRequested(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNewWindowRequestedEventArgs e)
         {
             e.Handled = true;  
@@ -44,8 +64,12 @@ namespace FilteredEdgeBrowser
         private void WvMain_DOMContentLoaded(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlDOMContentLoadedEventArgs e)
         {
             setStatus("DOM Content Loaded");
+
             myHistory.Navigated(e.Uri, wvMain.DocumentTitle);
+            if (onHistoryEvent != null) onHistoryEvent(wvMain.DocumentTitle, e.Uri.ToString());
+
             lblTitle.Text = wvMain.DocumentTitle;
+            if (onTitleChange != null) onTitleChange(myPage, wvMain.DocumentTitle);
 
             string newURL = e.Uri.ToString();
             txtURL.BackColor = (newURL.StartsWith("https")) ? Color.FromArgb(192,255,192) : Color.FromArgb(255, 192, 192);
@@ -78,6 +102,8 @@ namespace FilteredEdgeBrowser
         {
             gbMenu.Visible = visible;
         }
+
+        
     }
    
 }

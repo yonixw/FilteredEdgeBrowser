@@ -29,19 +29,38 @@ namespace FilteredEdgeBrowser
 
         private void addTabToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MyWebTab vw = new MyWebTab();
-            vw.SetToolbarVisibility(shouldHide);
-            vw.Dock = DockStyle.Fill;
             TabPage tab = new TabPage("Loading...");
-            tab.Controls.Add(vw);
+
+            MyWebTab view = new MyWebTab();
+            view.SetToolbarVisibility(shouldHide);
+            view.Dock = DockStyle.Fill;
+            view.setMyPage(tab);
+            view.onTitleChange += View_onTitleChange;
+
+            tab.Controls.Add(view);
+
             tabViews.TabPages.Add(tab);
+        }
+
+        private void View_onTitleChange(TabPage page, string title)
+        {
+            if (page != null)
+            {
+                page.Text = (title.Length > 25) ? title.Substring(0, 25) + " ..." : title;
+            }
+        }
+
+        public void closeTab(int index)
+        {
+            (tabViews.TabPages[index].Controls[0] as MyWebTab).closePage();
+            tabViews.TabPages.RemoveAt(index);
         }
 
         private void closeTabToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (tabViews.SelectedIndex > -1)
             {
-                tabViews.TabPages.RemoveAt(tabViews.SelectedIndex);
+                closeTab(tabViews.SelectedIndex);
             }
         }
 
@@ -57,7 +76,7 @@ namespace FilteredEdgeBrowser
             {
                 for (int i = 0; i < currentIndex; i++)
                 {
-                    tabViews.TabPages.RemoveAt(0);
+                    closeTab(0);
                 }
             }
         }
@@ -73,16 +92,16 @@ namespace FilteredEdgeBrowser
             
             if (currentIndex > -1)
             {
-                for (int i = currentIndex + 1; i < tabViews.TabPages.Count; i++)
+                for (int i = tabViews.TabPages.Count-1; i > currentIndex; i--) // reverse 
                 {
-                    tabViews.TabPages.RemoveAt(i);
+                    closeTab(i);
                 }
             }
         }
 
         private void closeOthersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tabViews.SelectedIndex > 0)
+            if (tabViews.SelectedIndex > -1)
             {
                 CloseToLeft(tabViews.SelectedIndex);
                 CloseToRight(0);
