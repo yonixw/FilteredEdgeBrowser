@@ -22,3 +22,8 @@ If not HTTP\s :
 		add https
 	else
 		google it
+
++ FrameNavigationStarting, + How to get html from all frames (recursive?)
+
+https://docs.microsoft.com/en-us/uwp/api/windows.web.ui.iwebviewcontrol.framenavigationstarting
+https://docs.microsoft.com/en-us/uwp/api/windows.web.ui.interop.webviewcontrol.framenavigationcompleted
