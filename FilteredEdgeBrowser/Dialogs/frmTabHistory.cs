@@ -38,7 +38,7 @@ namespace FilteredEdgeBrowser.Dialogs
             int historySize = myManger.Size();
             for (int i = 0; i < historySize; i++)
             {
-                string prefix = (currentIndex == i) ? "╠►► " : "║ ";
+                string prefix = (currentIndex == i) ? "╠► " : "║ ";
                 lstUrls.Items.Add(prefix + myManger[i].Title 
                     + " • " + myManger[i].URL.Host
                     + " • " + myManger[i].URL.PathAndQuery

@@ -39,6 +39,8 @@
             this.wvMain = new Microsoft.Toolkit.Forms.UI.Controls.WebView();
             this.myIcons = new System.Windows.Forms.ImageList(this.components);
             this.lblTitle = new System.Windows.Forms.Label();
+            this.bookmarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeUrlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -70,7 +72,9 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.navigateToolStripMenuItem});
+            this.navigateToolStripMenuItem,
+            this.bookmarksToolStripMenuItem,
+            this.changeUrlToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(3, 16);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(741, 24);
@@ -127,6 +131,20 @@
             this.lblTitle.Text = "Title";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // bookmarksToolStripMenuItem
+            // 
+            this.bookmarksToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("bookmarksToolStripMenuItem.Image")));
+            this.bookmarksToolStripMenuItem.Name = "bookmarksToolStripMenuItem";
+            this.bookmarksToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.bookmarksToolStripMenuItem.Text = "Bookmark!";
+            // 
+            // changeUrlToolStripMenuItem
+            // 
+            this.changeUrlToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("changeUrlToolStripMenuItem.Image")));
+            this.changeUrlToolStripMenuItem.Name = "changeUrlToolStripMenuItem";
+            this.changeUrlToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.changeUrlToolStripMenuItem.Text = "Change Url";
+            // 
             // MyWebTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,5 +178,7 @@
         private System.Windows.Forms.ToolStripMenuItem navigateToolStripMenuItem;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ImageList myIcons;
+        private System.Windows.Forms.ToolStripMenuItem bookmarksToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeUrlToolStripMenuItem;
     }
 }

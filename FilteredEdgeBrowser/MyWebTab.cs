@@ -12,10 +12,7 @@ namespace FilteredEdgeBrowser
 {
     public partial class MyWebTab : UserControl
     {
-        LocalHistoryManager myHistory = new LocalHistoryManager();
-
-        // Invoke script Exception from HRESULT: 0x80020101 ==> JS Syntax error
-        //http://suggestqueries.google.com/complete/search?output=toolbar&hl=he&q=%D7%91%D7%99%D7%91&gl=IL
+        LocalHistoryManager myHistory = new LocalHistoryManager(); 
 
         public MyWebTab()
         {
@@ -34,14 +31,14 @@ namespace FilteredEdgeBrowser
             wvMain.Navigate("https://www.google.com");
         }
 
-        private void WvMain_NewWindowRequested(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNewWindowRequestedEventArgs e)
-        {
-            e.Handled = true;  
-        }
-
         public void setStatus(string text)
         {
             lblStatus.Text = string.Format("[{0}] {1}", DateTime.Now, text);
+        }
+
+        private void WvMain_NewWindowRequested(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNewWindowRequestedEventArgs e)
+        {
+            e.Handled = true;  
         }
 
         private void WvMain_DOMContentLoaded(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlDOMContentLoadedEventArgs e)
@@ -55,13 +52,7 @@ namespace FilteredEdgeBrowser
             txtURL.Text = newURL;
 
         }
-
-        private void WvMain_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e)
-        {
-            // Final event per page
-            setStatus("Navigation Complete");
-        }
-
+        
         private void WvMain_NavigationStarting(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationStartingEventArgs e)
         {
             // TODO: Filter here
@@ -77,5 +68,16 @@ namespace FilteredEdgeBrowser
             }
         }
 
+        private void WvMain_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e)
+        {
+            // Final event per page
+            setStatus("Navigation Complete");
+        }
+
+        public void SetToolbarVisibility(bool visible)
+        {
+            gbMenu.Visible = visible;
+        }
     }
+   
 }
