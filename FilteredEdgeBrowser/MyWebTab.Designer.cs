@@ -28,37 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyWebTab));
             this.gbMenu = new System.Windows.Forms.GroupBox();
             this.txtURL = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.navigateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.wvMain = new Microsoft.Toolkit.Forms.UI.Controls.WebView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.navigateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myIcons = new System.Windows.Forms.ImageList(this.components);
+            this.lblTitle = new System.Windows.Forms.Label();
             this.gbMenu.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wvMain)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbMenu
             // 
+            this.gbMenu.Controls.Add(this.lblTitle);
             this.gbMenu.Controls.Add(this.txtURL);
             this.gbMenu.Controls.Add(this.menuStrip1);
             this.gbMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbMenu.Location = new System.Drawing.Point(0, 0);
             this.gbMenu.Name = "gbMenu";
-            this.gbMenu.Size = new System.Drawing.Size(747, 103);
+            this.gbMenu.Size = new System.Drawing.Size(747, 90);
             this.gbMenu.TabIndex = 1;
             this.gbMenu.TabStop = false;
             // 
             // txtURL
             // 
             this.txtURL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtURL.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtURL.Location = new System.Drawing.Point(3, 40);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(741, 20);
+            this.txtURL.ReadOnly = true;
+            this.txtURL.Size = new System.Drawing.Size(741, 26);
             this.txtURL.TabIndex = 0;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.navigateToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(3, 16);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(741, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // navigateToolStripMenuItem
+            // 
+            this.navigateToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("navigateToolStripMenuItem.Image")));
+            this.navigateToolStripMenuItem.Name = "navigateToolStripMenuItem";
+            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.navigateToolStripMenuItem.Text = "History";
+            this.navigateToolStripMenuItem.Click += new System.EventHandler(this.navigateToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -78,28 +103,29 @@
             // wvMain
             // 
             this.wvMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wvMain.Location = new System.Drawing.Point(0, 103);
+            this.wvMain.Location = new System.Drawing.Point(0, 90);
             this.wvMain.MinimumSize = new System.Drawing.Size(20, 20);
             this.wvMain.Name = "wvMain";
-            this.wvMain.Size = new System.Drawing.Size(747, 469);
+            this.wvMain.Size = new System.Drawing.Size(747, 482);
             this.wvMain.TabIndex = 4;
             // 
-            // menuStrip1
+            // myIcons
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.navigateToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(3, 16);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(741, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.myIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("myIcons.ImageStream")));
+            this.myIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.myIcons.Images.SetKeyName(0, "Sekkyumu-Developpers-Internet-History.ico");
             // 
-            // navigateToolStripMenuItem
+            // lblTitle
             // 
-            this.navigateToolStripMenuItem.Name = "navigateToolStripMenuItem";
-            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.navigateToolStripMenuItem.Text = "History";
-            this.navigateToolStripMenuItem.Click += new System.EventHandler(this.navigateToolStripMenuItem_Click);
+            this.lblTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.lblTitle.Location = new System.Drawing.Point(3, 66);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(741, 23);
+            this.lblTitle.TabIndex = 2;
+            this.lblTitle.Text = "Title";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MyWebTab
             // 
@@ -113,11 +139,11 @@
             this.Load += new System.EventHandler(this.MyWebTab_Load);
             this.gbMenu.ResumeLayout(false);
             this.gbMenu.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wvMain)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,5 +158,7 @@
         private Microsoft.Toolkit.Forms.UI.Controls.WebView wvMain;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem navigateToolStripMenuItem;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ImageList myIcons;
     }
 }

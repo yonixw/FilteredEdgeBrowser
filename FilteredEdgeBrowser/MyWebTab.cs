@@ -36,9 +36,7 @@ namespace FilteredEdgeBrowser
 
         private void WvMain_NewWindowRequested(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNewWindowRequestedEventArgs e)
         {
-            MessageBox.Show(e.Uri.ToString());
-            e.Handled = true;
-            
+            e.Handled = true;  
         }
 
         public void setStatus(string text)
@@ -50,6 +48,12 @@ namespace FilteredEdgeBrowser
         {
             setStatus("DOM Content Loaded");
             myHistory.Navigated(e.Uri, wvMain.DocumentTitle);
+            lblTitle.Text = wvMain.DocumentTitle;
+
+            string newURL = e.Uri.ToString();
+            txtURL.BackColor = (newURL.StartsWith("https")) ? Color.FromArgb(192,255,192) : Color.FromArgb(255, 192, 192);
+            txtURL.Text = newURL;
+
         }
 
         private void WvMain_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e)
@@ -64,21 +68,6 @@ namespace FilteredEdgeBrowser
             setStatus("Navigate to " + e.Uri.ToString());
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            wvMain.Navigate(new Uri(txtURL.Text));
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(wvMain.InvokeScript("eval", "document.body.innerHTML"));
-        }
-
-        private void comboBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void navigateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Dialogs.frmTabHistory chooseHistory = new Dialogs.frmTabHistory(myHistory);
@@ -87,5 +76,6 @@ namespace FilteredEdgeBrowser
                 wvMain.Navigate(chooseHistory.URL);
             }
         }
+
     }
 }
