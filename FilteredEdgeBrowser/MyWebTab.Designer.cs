@@ -31,33 +31,31 @@
             this.gbMenu = new System.Windows.Forms.GroupBox();
             this.txtURL = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.wvMain = new Microsoft.Toolkit.Forms.UI.Controls.WebView();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.wvMain = new Microsoft.Toolkit.Forms.UI.Controls.WebView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.navigateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wvMain)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbMenu
             // 
-            this.gbMenu.Controls.Add(this.comboBox1);
-            this.gbMenu.Controls.Add(this.button2);
-            this.gbMenu.Controls.Add(this.button1);
             this.gbMenu.Controls.Add(this.txtURL);
+            this.gbMenu.Controls.Add(this.menuStrip1);
             this.gbMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbMenu.Location = new System.Drawing.Point(0, 0);
             this.gbMenu.Name = "gbMenu";
-            this.gbMenu.Size = new System.Drawing.Size(747, 81);
+            this.gbMenu.Size = new System.Drawing.Size(747, 103);
             this.gbMenu.TabIndex = 1;
             this.gbMenu.TabStop = false;
             // 
             // txtURL
             // 
             this.txtURL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtURL.Location = new System.Drawing.Point(3, 16);
+            this.txtURL.Location = new System.Drawing.Point(3, 40);
             this.txtURL.Name = "txtURL";
             this.txtURL.Size = new System.Drawing.Size(741, 20);
             this.txtURL.TabIndex = 0;
@@ -72,58 +70,36 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // wvMain
-            // 
-            this.wvMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wvMain.Location = new System.Drawing.Point(0, 81);
-            this.wvMain.MinimumSize = new System.Drawing.Size(20, 20);
-            this.wvMain.Name = "wvMain";
-            this.wvMain.Size = new System.Drawing.Size(747, 491);
-            this.wvMain.TabIndex = 4;
-            // 
             // lblStatus
             // 
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
-            // button1
+            // wvMain
             // 
-            this.button1.Location = new System.Drawing.Point(20, 43);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.wvMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wvMain.Location = new System.Drawing.Point(0, 103);
+            this.wvMain.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wvMain.Name = "wvMain";
+            this.wvMain.Size = new System.Drawing.Size(747, 469);
+            this.wvMain.TabIndex = 4;
             // 
-            // button2
+            // menuStrip1
             // 
-            this.button2.Location = new System.Drawing.Point(131, 42);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.navigateToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(3, 16);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(741, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // comboBox1
+            // navigateToolStripMenuItem
             // 
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "44",
-            "55",
-            "yoniwas",
-            "http://yoniwas.com"});
-            this.comboBox1.Location = new System.Drawing.Point(247, 43);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(328, 21);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+            this.navigateToolStripMenuItem.Name = "navigateToolStripMenuItem";
+            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.navigateToolStripMenuItem.Text = "History";
+            this.navigateToolStripMenuItem.Click += new System.EventHandler(this.navigateToolStripMenuItem_Click);
             // 
             // MyWebTab
             // 
@@ -140,6 +116,8 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wvMain)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,8 +130,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private Microsoft.Toolkit.Forms.UI.Controls.WebView wvMain;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem navigateToolStripMenuItem;
     }
 }

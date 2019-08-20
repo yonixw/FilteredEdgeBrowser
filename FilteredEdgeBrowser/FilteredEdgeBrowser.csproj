@@ -52,6 +52,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructure\CyclicFastDrop.cs" />
+    <Compile Include="Dialogs\frmTabHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmTabHistory.Designer.cs">
+      <DependentUpon>frmTabHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalHistoryManager.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +74,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialogs\frmTabHistory.resx">
+      <DependentUpon>frmTabHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +107,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icons\bookmark-4.png" />
+    <Content Include="Icons\bookmark-silver.png" />
+    <Content Include="Icons\go-next-5.png" />
+    <Content Include="Icons\go-previous-5.png" />
+    <Content Include="Icons\help-about-2.png" />
+    <Content Include="Icons\iconfinder_-43_3057670.png" />
+    <Content Include="Icons\list-add-4.ico" />
+    <Content Include="Icons\list-add-4.png" />
+    <Content Include="Icons\process-stop-9.png" />
+    <Content Include="Icons\system-search-4.png" />
+    <Content Include="Icons\view-refresh-4.png" />
+    <Content Include="Icons\view-remove.png" />
+    <Content Include="Icons\window-close-2.ico" />
     <Content Include="Todos.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

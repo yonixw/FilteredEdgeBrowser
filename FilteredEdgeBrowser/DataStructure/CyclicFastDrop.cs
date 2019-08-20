@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace FilteredEdgeBrowser.DataStructure
 {
-    class CyclicFastDrop<T> 
+    public class CyclicFastDrop<T> 
     {
         T[] _cyclicBuffer = null;
 
         public CyclicFastDrop(int arrayMaxSize)
         {
-            _cyclicBuffer = new T[arrayMaxSize];
+            _cyclicBuffer = new T[arrayMaxSize+1];
         }
 
         int _currentPosition = 0;
@@ -23,7 +23,7 @@ namespace FilteredEdgeBrowser.DataStructure
 
         int cyclicDistance(int startIndex, int lastIndex)
         {
-            if (lastIndex > startIndex)
+            if (lastIndex >= startIndex)
             {
                 // The array is like this XX[=====]XX
                 return lastIndex - startIndex;
@@ -68,11 +68,25 @@ namespace FilteredEdgeBrowser.DataStructure
 
         public void AddAndDropFuture(T newItem)
         {
-            if (Size() > 0 && !newItem.Equals(_cyclicBuffer[getRelativeToCurrent(0)]))
+            int size = Size();
+           
+            if (size == 0) // _next == _current
             {
+                _nextElementPosition = getRelativeToCurrent(+1);
+                _cyclicBuffer[_currentPosition] = newItem;
+            }
+            else if (!newItem.Equals(_cyclicBuffer[getRelativeToCurrent(0)]))
+            {
+                // Add new element
                 _nextElementPosition = getRelativeToCurrent(+2);
                 _cyclicBuffer[getRelativeToCurrent(+1)] = newItem;
-                _currentPosition = getRelativeToCurrent(+1);
+                _currentPosition = getRelativeToCurrent(+1);                
+
+                if (_nextElementPosition == _firstElementPosition)
+                {
+                    // To avoid looking like empty array.
+                    _firstElementPosition = getCyclicDelta(+1, _firstElementPosition);
+                }
             }
         }
 
@@ -95,7 +109,7 @@ namespace FilteredEdgeBrowser.DataStructure
         public T this[int i]
         {
             get {
-                if (i < Size())
+                if (i >= 0 && i < Size())
                 {
                     return _cyclicBuffer[getCyclicDelta(i, _firstElementPosition)];
                 }

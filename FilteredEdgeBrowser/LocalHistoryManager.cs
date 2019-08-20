@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FilteredEdgeBrowser
 {
-    class HistoryItem
+    public class HistoryItem
     {
         public Uri URL;
         public string Title;
@@ -22,10 +22,10 @@ namespace FilteredEdgeBrowser
         }
     }
 
-    class LocalHistoryManager
+    public class LocalHistoryManager
     {
         DataStructure.CyclicFastDrop<HistoryItem> myCyclicHistory 
-                    = new DataStructure.CyclicFastDrop<HistoryItem>(25);
+                    = new DataStructure.CyclicFastDrop<HistoryItem>(5);
 
         public void Navigated(Uri url, string title)
         {
@@ -63,6 +63,11 @@ namespace FilteredEdgeBrowser
             }
 
             return null;
+        }
+
+        public int HistoryPosition()
+        {
+            return myCyclicHistory.CurrentPosition;
         }
 
         public HistoryItem this[int i]

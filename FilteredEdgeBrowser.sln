@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilteredEdgeBrowser", "FilteredEdgeBrowser\FilteredEdgeBrowser.csproj", "{64980D1A-A1DD-4C4F-BAB4-5FA89342D80F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilteredEdgeBrowserTests", "FilteredEdgeBrowserTests\FilteredEdgeBrowserTests.csproj", "{E3A2B164-6A5F-4A8E-BB4C-3FCFD52FB2AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{64980D1A-A1DD-4C4F-BAB4-5FA89342D80F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64980D1A-A1DD-4C4F-BAB4-5FA89342D80F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64980D1A-A1DD-4C4F-BAB4-5FA89342D80F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3A2B164-6A5F-4A8E-BB4C-3FCFD52FB2AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3A2B164-6A5F-4A8E-BB4C-3FCFD52FB2AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3A2B164-6A5F-4A8E-BB4C-3FCFD52FB2AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3A2B164-6A5F-4A8E-BB4C-3FCFD52FB2AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

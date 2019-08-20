@@ -12,6 +12,7 @@ namespace FilteredEdgeBrowser
 {
     public partial class MyWebTab : UserControl
     {
+        LocalHistoryManager myHistory = new LocalHistoryManager();
 
         // Invoke script Exception from HRESULT: 0x80020101 ==> JS Syntax error
         //http://suggestqueries.google.com/complete/search?output=toolbar&hl=he&q=%D7%91%D7%99%D7%91&gl=IL
@@ -29,17 +30,15 @@ namespace FilteredEdgeBrowser
             wvMain.NavigationCompleted += WvMain_NavigationCompleted;
             wvMain.DOMContentLoaded += WvMain_DOMContentLoaded;
             wvMain.NewWindowRequested += WvMain_NewWindowRequested;
+
+            wvMain.Navigate("https://www.google.com");
         }
 
         private void WvMain_NewWindowRequested(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNewWindowRequestedEventArgs e)
         {
+            MessageBox.Show(e.Uri.ToString());
             e.Handled = true;
             
-        }
-
-        public void Navigate(string url)
-        {
-            wvMain.Navigate(url);
         }
 
         public void setStatus(string text)
@@ -50,6 +49,7 @@ namespace FilteredEdgeBrowser
         private void WvMain_DOMContentLoaded(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlDOMContentLoadedEventArgs e)
         {
             setStatus("DOM Content Loaded");
+            myHistory.Navigated(e.Uri, wvMain.DocumentTitle);
         }
 
         private void WvMain_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e)
@@ -77,6 +77,15 @@ namespace FilteredEdgeBrowser
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void navigateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dialogs.frmTabHistory chooseHistory = new Dialogs.frmTabHistory(myHistory);
+            if (chooseHistory.ShowDialog() == DialogResult.OK)
+            {
+                wvMain.Navigate(chooseHistory.URL);
+            }
         }
     }
 }
