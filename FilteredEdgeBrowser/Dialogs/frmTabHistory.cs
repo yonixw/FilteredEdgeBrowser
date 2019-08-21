@@ -34,6 +34,7 @@ namespace FilteredEdgeBrowser.Dialogs
 
         private void frmTabHistory_Load(object sender, EventArgs e)
         {
+
             int currentIndex = myManger.HistoryPosition();
             int historySize = myManger.Size();
             for (int i = 0; i < historySize; i++)

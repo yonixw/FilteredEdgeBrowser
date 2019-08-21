@@ -38,7 +38,7 @@
             this.lstUrls.HorizontalScrollbar = true;
             this.lstUrls.ItemHeight = 18;
             this.lstUrls.Location = new System.Drawing.Point(0, 0);
-            this.lstUrls.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstUrls.Margin = new System.Windows.Forms.Padding(4);
             this.lstUrls.Name = "lstUrls";
             this.lstUrls.Size = new System.Drawing.Size(607, 303);
             this.lstUrls.TabIndex = 0;
@@ -52,8 +52,9 @@
             this.Controls.Add(this.lstUrls);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTabHistory";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tab history";
             this.Load += new System.EventHandler(this.frmTabHistory_Load);

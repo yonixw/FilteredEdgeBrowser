@@ -30,6 +30,7 @@ namespace FilteredEdgeBrowser.Dialogs
 
         private void frmDlgBookmark_Load(object sender, EventArgs e)
         {
+            this.MaximumSize = this.Size;
             txtName.Text = BookmarkName;
             txtURL.Text = URL;
         }

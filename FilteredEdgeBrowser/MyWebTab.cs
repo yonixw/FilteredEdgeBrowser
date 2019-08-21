@@ -103,7 +103,10 @@ namespace FilteredEdgeBrowser
             gbMenu.Visible = visible;
         }
 
-        
+        private void bookmarksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new Dialogs.frmDlgBookmark(wvMain.DocumentTitle, myHistory.CurrentURL())).ShowDialog();
+        }
     }
    
 }

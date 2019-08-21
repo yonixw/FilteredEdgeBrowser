@@ -59,6 +59,12 @@
     <Compile Include="Dialogs\frmDlgBookmark.Designer.cs">
       <DependentUpon>frmDlgBookmark.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\frmEditUrl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmEditUrl.Designer.cs">
+      <DependentUpon>frmEditUrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\frmTabHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dialogs\frmDlgBookmark.resx">
       <DependentUpon>frmDlgBookmark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmEditUrl.resx">
+      <DependentUpon>frmEditUrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmTabHistory.resx">
       <DependentUpon>frmTabHistory.cs</DependentUpon>

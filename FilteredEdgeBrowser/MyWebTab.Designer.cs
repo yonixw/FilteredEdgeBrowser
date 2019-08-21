@@ -31,16 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyWebTab));
             this.gbMenu = new System.Windows.Forms.GroupBox();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.txtURL = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.navigateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bookmarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeUrlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.wvMain = new Microsoft.Toolkit.Forms.UI.Controls.WebView();
             this.myIcons = new System.Windows.Forms.ImageList(this.components);
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.bookmarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeUrlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -58,6 +58,18 @@
             this.gbMenu.Size = new System.Drawing.Size(747, 90);
             this.gbMenu.TabIndex = 1;
             this.gbMenu.TabStop = false;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.lblTitle.Location = new System.Drawing.Point(3, 66);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(741, 23);
+            this.lblTitle.TabIndex = 2;
+            this.lblTitle.Text = "Title";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtURL
             // 
@@ -89,6 +101,21 @@
             this.navigateToolStripMenuItem.Text = "History";
             this.navigateToolStripMenuItem.Click += new System.EventHandler(this.navigateToolStripMenuItem_Click);
             // 
+            // bookmarksToolStripMenuItem
+            // 
+            this.bookmarksToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("bookmarksToolStripMenuItem.Image")));
+            this.bookmarksToolStripMenuItem.Name = "bookmarksToolStripMenuItem";
+            this.bookmarksToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.bookmarksToolStripMenuItem.Text = "Bookmark!";
+            this.bookmarksToolStripMenuItem.Click += new System.EventHandler(this.bookmarksToolStripMenuItem_Click);
+            // 
+            // changeUrlToolStripMenuItem
+            // 
+            this.changeUrlToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("changeUrlToolStripMenuItem.Image")));
+            this.changeUrlToolStripMenuItem.Name = "changeUrlToolStripMenuItem";
+            this.changeUrlToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.changeUrlToolStripMenuItem.Text = "Change Url";
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -118,32 +145,6 @@
             this.myIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("myIcons.ImageStream")));
             this.myIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.myIcons.Images.SetKeyName(0, "Sekkyumu-Developpers-Internet-History.ico");
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.lblTitle.Location = new System.Drawing.Point(3, 66);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(741, 23);
-            this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "Title";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // bookmarksToolStripMenuItem
-            // 
-            this.bookmarksToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("bookmarksToolStripMenuItem.Image")));
-            this.bookmarksToolStripMenuItem.Name = "bookmarksToolStripMenuItem";
-            this.bookmarksToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
-            this.bookmarksToolStripMenuItem.Text = "Bookmark!";
-            // 
-            // changeUrlToolStripMenuItem
-            // 
-            this.changeUrlToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("changeUrlToolStripMenuItem.Image")));
-            this.changeUrlToolStripMenuItem.Name = "changeUrlToolStripMenuItem";
-            this.changeUrlToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.changeUrlToolStripMenuItem.Text = "Change Url";
             // 
             // MyWebTab
             // 

@@ -77,5 +77,17 @@ namespace FilteredEdgeBrowser
                 return myCyclicHistory[i];
             }
         }
+
+        public string CurrentURL()
+        {
+            if (Size() > 0)
+            {
+                return this[HistoryPosition()].URL.ToString();
+            }
+            else
+            {
+                return "";
+            }
+        }
     }
 }
