@@ -35,10 +35,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.lstHTTP = new System.Windows.Forms.ListBox();
+            this.lstHistory = new System.Windows.Forms.ListBox();
+            this.lstBookmark = new System.Windows.Forms.ListBox();
+            this.lstGoogle = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -69,6 +69,7 @@
             this.txtFreeStyle.Name = "txtFreeStyle";
             this.txtFreeStyle.Size = new System.Drawing.Size(597, 26);
             this.txtFreeStyle.TabIndex = 4;
+            this.txtFreeStyle.TextChanged += new System.EventHandler(this.txtFreeStyle_TextChanged);
             // 
             // label2
             // 
@@ -82,7 +83,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listBox2);
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.groupBox1.Controls.Add(this.lstHistory);
             this.groupBox1.Location = new System.Drawing.Point(16, 214);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(597, 100);
@@ -92,7 +94,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listBox3);
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.groupBox2.Controls.Add(this.lstBookmark);
             this.groupBox2.Location = new System.Drawing.Point(16, 320);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(597, 114);
@@ -102,49 +105,50 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.listBox4);
-            this.groupBox3.Location = new System.Drawing.Point(16, 451);
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.groupBox3.Controls.Add(this.lstGoogle);
+            this.groupBox3.Location = new System.Drawing.Point(16, 440);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(597, 130);
+            this.groupBox3.Size = new System.Drawing.Size(597, 141);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Google suggestion";
             // 
-            // listBox1
+            // lstHTTP
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 18;
-            this.listBox1.Location = new System.Drawing.Point(16, 151);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(597, 58);
-            this.listBox1.TabIndex = 8;
+            this.lstHTTP.FormattingEnabled = true;
+            this.lstHTTP.ItemHeight = 18;
+            this.lstHTTP.Location = new System.Drawing.Point(16, 151);
+            this.lstHTTP.Name = "lstHTTP";
+            this.lstHTTP.Size = new System.Drawing.Size(597, 58);
+            this.lstHTTP.TabIndex = 8;
             // 
-            // listBox2
+            // lstHistory
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 18;
-            this.listBox2.Location = new System.Drawing.Point(6, 25);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(585, 58);
-            this.listBox2.TabIndex = 9;
+            this.lstHistory.FormattingEnabled = true;
+            this.lstHistory.ItemHeight = 18;
+            this.lstHistory.Location = new System.Drawing.Point(6, 25);
+            this.lstHistory.Name = "lstHistory";
+            this.lstHistory.Size = new System.Drawing.Size(585, 58);
+            this.lstHistory.TabIndex = 9;
             // 
-            // listBox3
+            // lstBookmark
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 18;
-            this.listBox3.Location = new System.Drawing.Point(6, 25);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(585, 76);
-            this.listBox3.TabIndex = 10;
+            this.lstBookmark.FormattingEnabled = true;
+            this.lstBookmark.ItemHeight = 18;
+            this.lstBookmark.Location = new System.Drawing.Point(6, 25);
+            this.lstBookmark.Name = "lstBookmark";
+            this.lstBookmark.Size = new System.Drawing.Size(585, 76);
+            this.lstBookmark.TabIndex = 10;
             // 
-            // listBox4
+            // lstGoogle
             // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 18;
-            this.listBox4.Location = new System.Drawing.Point(6, 25);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(585, 94);
-            this.listBox4.TabIndex = 11;
+            this.lstGoogle.FormattingEnabled = true;
+            this.lstGoogle.ItemHeight = 18;
+            this.lstGoogle.Location = new System.Drawing.Point(6, 25);
+            this.lstGoogle.Name = "lstGoogle";
+            this.lstGoogle.Size = new System.Drawing.Size(585, 112);
+            this.lstGoogle.TabIndex = 11;
             // 
             // button1
             // 
@@ -154,6 +158,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "◄ OK!";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmEditUrl
             // 
@@ -161,7 +166,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 593);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lstHTTP);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -174,6 +179,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmEditUrl";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit the url";
             this.Load += new System.EventHandler(this.frmEditUrl_Load);
             this.groupBox1.ResumeLayout(false);
@@ -191,12 +197,12 @@
         private System.Windows.Forms.TextBox txtFreeStyle;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox lstHistory;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox lstBookmark;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstGoogle;
+        private System.Windows.Forms.ListBox lstHTTP;
         private System.Windows.Forms.Button button1;
     }
 }

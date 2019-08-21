@@ -16,7 +16,7 @@ namespace FilteredEdgeBrowser
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new Dialogs.frmEditUrl());//new MainForm());
         }
     }
 }
