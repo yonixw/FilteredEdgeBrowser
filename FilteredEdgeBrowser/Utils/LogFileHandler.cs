@@ -68,10 +68,15 @@ namespace FilteredEdgeBrowser.Utils
             });
         }
 
+        private int _progress = 0;
+        public int Progress()
+        {
+            return _progress;
+        }
+        
         private void mainSearchLoop()
         {
             isThreadRunning.safeArea((get, set) => { set(true); });
-
 
             string currentSearch = searchText;
             if (currentSearch ==  null || currentSearch.Length > 0)
@@ -92,8 +97,9 @@ namespace FilteredEdgeBrowser.Utils
                 {
                     if (line.IndexOf(currentSearch, StringComparison.OrdinalIgnoreCase) > -1)
                     {
-                        ///////////////
+                        /////////////// TODO: Handle fount items (Array vs Cyclic)
                     }
+                    _progress = (int) ((file.BaseStream.Position * 1.0f / (file.BaseStream.Length+ 1)) * 100.0f);
 
                     line = file.ReadLine();
                     isEOF = (line == null);
