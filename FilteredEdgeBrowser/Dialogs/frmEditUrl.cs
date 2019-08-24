@@ -1,8 +1,10 @@
-﻿using System;
+﻿using FilteredEdgeBrowser.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +21,13 @@ namespace FilteredEdgeBrowser.Dialogs
             InitializeComponent();
         }
 
+        
         private void frmEditUrl_Load(object sender, EventArgs e)
         {
             this.MaximumSize = this.Size;
             txtURL.Text = URL;
+
+           
         }
 
         private void button1_Click(object sender, EventArgs e)

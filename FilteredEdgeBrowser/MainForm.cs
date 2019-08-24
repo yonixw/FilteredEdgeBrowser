@@ -111,7 +111,7 @@ namespace FilteredEdgeBrowser
         }
 
 
-        LogFileHandler historyLog, bookmarkLog;
+        public static LogFileHandler historyLog, bookmarkLog;
         private void MainForm_Load(object sender, EventArgs e)
         {
             string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);

@@ -8,7 +8,7 @@ namespace FilteredEdgeBrowser.Utils
 {
     // https://stackoverflow.com/a/452945/1997873
 
-
+    
 
     /// <summary>
     /// Takes an encoding (defaulting to UTF-8) and a function which produces a seekable stream
@@ -16,7 +16,7 @@ namespace FilteredEdgeBrowser.Utils
     /// Only single byte encodings, and UTF-8 and Unicode, are supported. The stream
     /// returned by the function must be seekable.
     /// </summary>
-    public sealed class ReverseLineReader : IEnumerable<string>
+    public sealed class ReverseLineReader : IEnumerable<string>, IDisposable
     {
         /// <summary>
         /// Buffer size to use by default. Classes with internal access can specify
@@ -120,24 +120,25 @@ namespace FilteredEdgeBrowser.Utils
             }
         }
 
+        public Stream myStream;
         /// <summary>
         /// Returns the enumerator reading strings backwards. If this method discovers that
         /// the returned stream is either unreadable or unseekable, a NotSupportedException is thrown.
         /// </summary>
         public IEnumerator<string> GetEnumerator()
         {
-            Stream stream = streamSource();
-            if (!stream.CanSeek)
+            myStream = streamSource();
+            if (!myStream.CanSeek)
             {
-                stream.Dispose();
+                myStream.Dispose();
                 throw new NotSupportedException("Unable to seek within stream");
             }
-            if (!stream.CanRead)
+            if (!myStream.CanRead)
             {
-                stream.Dispose();
+                myStream.Dispose();
                 throw new NotSupportedException("Unable to read within stream");
             }
-            return GetEnumeratorImpl(stream);
+            return GetEnumeratorImpl(myStream);
         }
 
         private IEnumerator<string> GetEnumeratorImpl(Stream stream)
@@ -266,6 +267,11 @@ namespace FilteredEdgeBrowser.Utils
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public void Dispose()
+        {
+            myStream.Dispose();
         }
     }
 
