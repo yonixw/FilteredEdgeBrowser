@@ -1,8 +1,10 @@
-﻿using System;
+﻿using FilteredEdgeBrowser.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,6 +110,16 @@ namespace FilteredEdgeBrowser
             }
         }
 
-        
+
+        LogFileHandler historyLog, bookmarkLog;
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string historyPath = Path.Combine(appdata, "FilteredEdgeBrowser", "history.log.txt");
+            string bookmarkPath = Path.Combine(appdata, "FilteredEdgeBrowser", "bookmark.log.txt");
+
+            historyLog = new LogFileHandler(historyPath);
+            bookmarkLog = new LogFileHandler(bookmarkPath);
+        }
     }
 }

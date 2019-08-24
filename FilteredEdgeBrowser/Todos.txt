@@ -1,29 +1,33 @@
-﻿+ Options in policy:
-
-Per domain:
-- Allow only in browser
-- Allowed in proxy (so also in webbrowser)
-- Allowed to be referrer
+﻿+ Options in policy (seperate):
+	- Allowed to be referrer
+	- Program whitelist
+		- User whitelist with task in task scheduler.
 
 In mitm:
--Every request should have exe fullpath
+	-Every request should have exe fullpath
+	-whitelist by full path, and make readonly folder for limited-user
 
-Add to filtering:
--Program + Users whitelist (not diverted)
 
-Addressbar is blocked, suggestion in new window (diaglof-singleton)
-Current address to change
-History thread (from append log)
-Bookmark thread (form some append log)
-HTTP \ HTTPS
-Google suggestion
-If not HTTP\s :
-	if domain :
-		add https
-	else
-		google it
+Suggestion Dialog
+	Addressbar is blocked, suggestion in new window (diaglof-singleton)
+	Current address to change
+	History thread (from append log)
+	Bookmark thread (form some append log)
+	HTTP \ HTTPS
+	Google suggestion
+	If not HTTP\s :
+		if domain :
+			add https
+		else
+			google it
 
-+ FrameNavigationStarting, + How to get html from all frames (recursive?)
+Whitelist only those with "eval\function" ? check type=function = "F() {native?}"
+	+ FrameNavigationStarting, + How to get html from all frames (recursive?)
+
+Logs (history\bookmark):
+	- search maximum 100
+	- Reverse read
+	- Save\read from %appdata%
 
 https://docs.microsoft.com/en-us/uwp/api/windows.web.ui.iwebviewcontrol.framenavigationstarting
 https://docs.microsoft.com/en-us/uwp/api/windows.web.ui.interop.webviewcontrol.framenavigationcompleted

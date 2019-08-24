@@ -31,15 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabViews = new System.Windows.Forms.TabControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.minMaxViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookmarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToRightToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.closeOthersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.minMaxViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bookmarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +47,7 @@
             // 
             this.tabViews.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabViews.Location = new System.Drawing.Point(0, 24);
-            this.tabViews.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabViews.Margin = new System.Windows.Forms.Padding(4);
             this.tabViews.Name = "tabViews";
             this.tabViews.SelectedIndex = 0;
             this.tabViews.Size = new System.Drawing.Size(816, 693);
@@ -67,6 +67,14 @@
             this.menuStrip1.Size = new System.Drawing.Size(816, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // minMaxViewToolStripMenuItem
+            // 
+            this.minMaxViewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("minMaxViewToolStripMenuItem.Image")));
+            this.minMaxViewToolStripMenuItem.Name = "minMaxViewToolStripMenuItem";
+            this.minMaxViewToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
+            this.minMaxViewToolStripMenuItem.Text = "Min\\Max View";
+            this.minMaxViewToolStripMenuItem.Click += new System.EventHandler(this.minMaxViewToolStripMenuItem_Click);
             // 
             // addTabToolStripMenuItem
             // 
@@ -94,6 +102,27 @@
             this.closeToRightToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.closeToRightToolStripMenuItem.Text = "Close ....";
             // 
+            // closeToLeftToolStripMenuItem
+            // 
+            this.closeToLeftToolStripMenuItem.Name = "closeToLeftToolStripMenuItem";
+            this.closeToLeftToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.closeToLeftToolStripMenuItem.Text = "Close to left";
+            this.closeToLeftToolStripMenuItem.Click += new System.EventHandler(this.closeToLeftToolStripMenuItem_Click);
+            // 
+            // closeToRightToolStripMenuItem1
+            // 
+            this.closeToRightToolStripMenuItem1.Name = "closeToRightToolStripMenuItem1";
+            this.closeToRightToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
+            this.closeToRightToolStripMenuItem1.Text = "Close to right";
+            this.closeToRightToolStripMenuItem1.Click += new System.EventHandler(this.closeToRightToolStripMenuItem1_Click);
+            // 
+            // closeOthersToolStripMenuItem
+            // 
+            this.closeOthersToolStripMenuItem.Name = "closeOthersToolStripMenuItem";
+            this.closeOthersToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.closeOthersToolStripMenuItem.Text = "Close others";
+            this.closeOthersToolStripMenuItem.Click += new System.EventHandler(this.closeOthersToolStripMenuItem_Click);
+            // 
             // bookmarkToolStripMenuItem
             // 
             this.bookmarkToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -108,35 +137,6 @@
             this.historyToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.historyToolStripMenuItem.Text = "All History";
             // 
-            // closeToLeftToolStripMenuItem
-            // 
-            this.closeToLeftToolStripMenuItem.Name = "closeToLeftToolStripMenuItem";
-            this.closeToLeftToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.closeToLeftToolStripMenuItem.Text = "Close to left";
-            this.closeToLeftToolStripMenuItem.Click += new System.EventHandler(this.closeToLeftToolStripMenuItem_Click);
-            // 
-            // closeToRightToolStripMenuItem1
-            // 
-            this.closeToRightToolStripMenuItem1.Name = "closeToRightToolStripMenuItem1";
-            this.closeToRightToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.closeToRightToolStripMenuItem1.Text = "Close to right";
-            this.closeToRightToolStripMenuItem1.Click += new System.EventHandler(this.closeToRightToolStripMenuItem1_Click);
-            // 
-            // closeOthersToolStripMenuItem
-            // 
-            this.closeOthersToolStripMenuItem.Name = "closeOthersToolStripMenuItem";
-            this.closeOthersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.closeOthersToolStripMenuItem.Text = "Close others";
-            this.closeOthersToolStripMenuItem.Click += new System.EventHandler(this.closeOthersToolStripMenuItem_Click);
-            // 
-            // minMaxViewToolStripMenuItem
-            // 
-            this.minMaxViewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("minMaxViewToolStripMenuItem.Image")));
-            this.minMaxViewToolStripMenuItem.Name = "minMaxViewToolStripMenuItem";
-            this.minMaxViewToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
-            this.minMaxViewToolStripMenuItem.Text = "Min\\Max View";
-            this.minMaxViewToolStripMenuItem.Click += new System.EventHandler(this.minMaxViewToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -146,10 +146,11 @@
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Filtered Edge Browser";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
