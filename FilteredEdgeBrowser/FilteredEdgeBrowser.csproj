@@ -87,6 +87,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\LogFileHandler.cs" />
+    <Compile Include="Utils\ReverseTextReader.cs" />
     <EmbeddedResource Include="Dialogs\frmDlgBookmark.resx">
       <DependentUpon>frmDlgBookmark.cs</DependentUpon>
     </EmbeddedResource>

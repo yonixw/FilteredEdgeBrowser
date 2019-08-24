@@ -25,6 +25,7 @@ namespace FilteredEdgeBrowser.Dialogs
         {
             BookmarkName = txtName.Text;
             URL = txtURL.Text;
+            MainForm.bookmarkLog.SaveUrlToFile(BookmarkName, URL);
             DialogResult = DialogResult.OK;
         }
 

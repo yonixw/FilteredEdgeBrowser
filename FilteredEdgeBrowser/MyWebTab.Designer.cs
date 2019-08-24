@@ -115,6 +115,7 @@
             this.changeUrlToolStripMenuItem.Name = "changeUrlToolStripMenuItem";
             this.changeUrlToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.changeUrlToolStripMenuItem.Text = "Change Url";
+            this.changeUrlToolStripMenuItem.Click += new System.EventHandler(this.changeUrlToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 

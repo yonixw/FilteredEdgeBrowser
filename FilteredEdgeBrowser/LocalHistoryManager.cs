@@ -25,12 +25,13 @@ namespace FilteredEdgeBrowser
     public class LocalHistoryManager
     {
         DataStructure.CyclicFastDrop<HistoryItem> myCyclicHistory 
-                    = new DataStructure.CyclicFastDrop<HistoryItem>(5);
+                    = new DataStructure.CyclicFastDrop<HistoryItem>(25);
 
         public void Navigated(Uri url, string title)
         {
             HistoryItem newItem = new HistoryItem() { URL = url, Title = title };
-            myCyclicHistory.AddAndDropFuture(newItem);            
+            myCyclicHistory.AddAndDropFuture(newItem);
+            MainForm.historyLog.SaveUrlToFile(title, url.ToString());
         }
 
         public void NavigatedIndex(int i)

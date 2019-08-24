@@ -107,6 +107,11 @@ namespace FilteredEdgeBrowser
         {
             (new Dialogs.frmDlgBookmark(wvMain.DocumentTitle, myHistory.CurrentURL())).ShowDialog();
         }
+
+        private void changeUrlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: use return url
+        }
     }
    
 }

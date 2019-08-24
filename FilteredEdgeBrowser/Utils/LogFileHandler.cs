@@ -25,7 +25,7 @@ namespace FilteredEdgeBrowser.Utils
         }
     }
 
-    class LogFileHandler
+    public class LogFileHandler
     {
         public const string DataSeperator = "|_&~%~&_|";
 
