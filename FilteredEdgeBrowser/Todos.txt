@@ -33,4 +33,5 @@ https://docs.microsoft.com/en-us/uwp/api/windows.web.ui.iwebviewcontrol.framenav
 https://docs.microsoft.com/en-us/uwp/api/windows.web.ui.interop.webviewcontrol.framenavigationcompleted
 
 // Invoke script Exception from HRESULT: 0x80020101 ==> JS Syntax error
-//http://suggestqueries.google.com/complete/search?output=toolbar&hl=he&q=%D7%91%D7%99%D7%91&gl=IL
+//https://suggestqueries.google.com/complete/search?output=toolbar&hl=he&gl=IL&q=%D7%91%D7%99%D7%91
+//https://www.google.com/search?q=gggg

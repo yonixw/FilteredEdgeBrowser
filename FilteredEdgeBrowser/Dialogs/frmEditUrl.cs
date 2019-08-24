@@ -6,9 +6,11 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace FilteredEdgeBrowser.Dialogs
 {
@@ -95,13 +97,29 @@ namespace FilteredEdgeBrowser.Dialogs
 
         
 
-        void onTabChange(int index)
+        async Task onTabChange(int index)
         {
             if (txtFreeStyle.Text.Length == 0) return;
 
             switch (index)
             {
                 case 0: // Google
+                    HttpClient client = new HttpClient();
+                    HttpResponseMessage msg = await client.GetAsync(
+                        "https://suggestqueries.google.com/complete/search?output=toolbar&hl=he&gl=IL&q=" + txtFreeStyle.Text);
+                    string data = await msg.Content.ReadAsStringAsync();
+
+                    var xml = XDocument.Parse(data,LoadOptions.PreserveWhitespace);
+                    var query = from c in xml.Root.Descendants("suggestion")
+                                select c.Attribute("data");
+
+                    lstGoogle.Items.Clear();
+                    foreach (string name in query)
+                    {
+                        UrlItem item = new UrlItem(name, "https://www.google.com/search?q=" + name);
+                        lstGoogle.Items.Add(item);
+                    }
+
                     break;
 
                 case 1: // History
@@ -114,7 +132,7 @@ namespace FilteredEdgeBrowser.Dialogs
             }
         }
 
-        private void txtFreeStyle_TextChanged(object sender, EventArgs e)
+        private async void txtFreeStyle_TextChanged(object sender, EventArgs e)
         {
             Uri url = null;
             if (Uri.TryCreate("http://" + txtFreeStyle.Text, UriKind.Absolute, out url))
@@ -127,17 +145,21 @@ namespace FilteredEdgeBrowser.Dialogs
                 lstHTTP.Items.Add(https.ToString());
             }
 
-            onTabChange(tabControl1.SelectedIndex);
+            await onTabChange(tabControl1.SelectedIndex);
         }
 
-        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        private async void tabControl1_TabIndexChanged(object sender, EventArgs e)
         {
-            onTabChange(tabControl1.SelectedIndex);
+            await onTabChange(tabControl1.SelectedIndex);
         }
 
         private void lstGoogle_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+            ListBox lst = sender as ListBox;
+            if (lst.SelectedIndex > -1)
+            {
+                ReturnURL((lst.SelectedItem as UrlItem).URL());
+            }
         }
 
         private void lstHistory_SelectedIndexChanged(object sender, EventArgs e)
