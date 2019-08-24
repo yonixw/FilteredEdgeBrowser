@@ -18,11 +18,6 @@ namespace FilteredEdgeBrowser
         public delegate void titleEvent(TabPage page, string title);
         public event titleEvent onTitleChange;
 
-        public delegate void historyEvent(string title, string url);
-        public event historyEvent onHistoryEvent;
-
-        public delegate void bookmarkEvent(string name, string url);
-        public event bookmarkEvent onBookmarkEvent;
 
         public MyWebTab()
         {
@@ -66,10 +61,9 @@ namespace FilteredEdgeBrowser
             setStatus("DOM Content Loaded");
 
             myHistory.Navigated(e.Uri, wvMain.DocumentTitle);
-            if (onHistoryEvent != null) onHistoryEvent(wvMain.DocumentTitle, e.Uri.ToString());
 
             lblTitle.Text = wvMain.DocumentTitle;
-            if (onTitleChange != null) onTitleChange(myPage, wvMain.DocumentTitle);
+            onTitleChange?.Invoke(myPage, wvMain.DocumentTitle);
 
             string newURL = e.Uri.ToString();
             txtURL.BackColor = (newURL.StartsWith("https")) ? Color.FromArgb(192,255,192) : Color.FromArgb(255, 192, 192);
@@ -110,7 +104,12 @@ namespace FilteredEdgeBrowser
 
         private void changeUrlToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: use return url
+            Dialogs.frmEditUrl dialog = new Dialogs.frmEditUrl();
+            dialog.URL = txtURL.Text;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                wvMain.Navigate(dialog.URL);
+            }
         }
     }
    

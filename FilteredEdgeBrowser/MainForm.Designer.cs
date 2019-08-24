@@ -38,8 +38,6 @@
             this.closeToLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToRightToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.closeOthersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookmarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,9 +57,7 @@
             this.minMaxViewToolStripMenuItem,
             this.addTabToolStripMenuItem,
             this.closeTabToolStripMenuItem,
-            this.closeToRightToolStripMenuItem,
-            this.bookmarkToolStripMenuItem,
-            this.historyToolStripMenuItem});
+            this.closeToRightToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(816, 24);
@@ -123,20 +119,6 @@
             this.closeOthersToolStripMenuItem.Text = "Close others";
             this.closeOthersToolStripMenuItem.Click += new System.EventHandler(this.closeOthersToolStripMenuItem_Click);
             // 
-            // bookmarkToolStripMenuItem
-            // 
-            this.bookmarkToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.bookmarkToolStripMenuItem.Name = "bookmarkToolStripMenuItem";
-            this.bookmarkToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
-            this.bookmarkToolStripMenuItem.Text = "Bookmarks";
-            // 
-            // historyToolStripMenuItem
-            // 
-            this.historyToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
-            this.historyToolStripMenuItem.Text = "All History";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -165,8 +147,6 @@
         private System.Windows.Forms.ToolStripMenuItem addTabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeTabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToRightToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bookmarkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToLeftToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToRightToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem closeOthersToolStripMenuItem;

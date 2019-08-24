@@ -32,6 +32,11 @@ namespace FilteredEdgeBrowser.Dialogs
             }
         }
 
+        public static string  formatURLHelper(string name, string url)
+        {
+            return name + " • " + url;
+        }
+
         private void frmTabHistory_Load(object sender, EventArgs e)
         {
 
@@ -40,10 +45,9 @@ namespace FilteredEdgeBrowser.Dialogs
             for (int i = 0; i < historySize; i++)
             {
                 string prefix = (currentIndex == i) ? "╠► " : "║ ";
-                lstUrls.Items.Add(prefix + myManger[i].Title 
-                    + " • " + myManger[i].URL.Host
-                    + " • " + myManger[i].URL.PathAndQuery
-                    );
+                lstUrls.Items.Add(prefix + formatURLHelper(myManger[i].Title,
+                    formatURLHelper(myManger[i].URL.Host, myManger[i].URL.PathAndQuery)
+                    ));
             }
         }
     }

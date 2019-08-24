@@ -160,6 +160,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(597, 373);
             this.tabControl1.TabIndex = 10;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
             // 
             // tabPage1
             // 
@@ -210,6 +211,7 @@
             this.lstGoogle.Name = "lstGoogle";
             this.lstGoogle.Size = new System.Drawing.Size(577, 288);
             this.lstGoogle.TabIndex = 13;
+            this.lstGoogle.SelectedIndexChanged += new System.EventHandler(this.lstGoogle_SelectedIndexChanged);
             // 
             // pbHistory
             // 
@@ -236,6 +238,7 @@
             this.lstBookmark.Name = "lstBookmark";
             this.lstBookmark.Size = new System.Drawing.Size(583, 294);
             this.lstBookmark.TabIndex = 14;
+            this.lstBookmark.SelectedIndexChanged += new System.EventHandler(this.lstBookmark_SelectedIndexChanged);
             // 
             // lstHistory
             // 
@@ -246,6 +249,7 @@
             this.lstHistory.Name = "lstHistory";
             this.lstHistory.Size = new System.Drawing.Size(577, 288);
             this.lstHistory.TabIndex = 14;
+            this.lstHistory.SelectedIndexChanged += new System.EventHandler(this.lstHistory_SelectedIndexChanged);
             // 
             // frmEditUrl
             // 

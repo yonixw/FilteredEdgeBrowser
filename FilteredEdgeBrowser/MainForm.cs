@@ -115,8 +115,18 @@ namespace FilteredEdgeBrowser
         private void MainForm_Load(object sender, EventArgs e)
         {
             string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
             string historyPath = Path.Combine(appdata, "FilteredEdgeBrowser", "history.log.txt");
+            if (!File.Exists(historyPath))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(historyPath));
+            }
+
             string bookmarkPath = Path.Combine(appdata, "FilteredEdgeBrowser", "bookmark.log.txt");
+            if (!File.Exists(bookmarkPath))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(bookmarkPath));
+            }
 
             historyLog = new LogFileHandler(historyPath);
             bookmarkLog = new LogFileHandler(bookmarkPath);

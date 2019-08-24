@@ -20,7 +20,9 @@ namespace FilteredEdgeBrowser.Utils
         {
             lock (myLock)
             {
-                callback(() => { return data; }, (T newValue) => { data = newValue; });
+                callback(() => { return data; }, (T newValue) => {
+                    data = newValue;
+                });
             }
         }
     }
@@ -78,22 +80,22 @@ namespace FilteredEdgeBrowser.Utils
             return _progress;
         }
 
-        public string[] UrlResults = new string[100];
-        private int currentResultIndex = 0;
+        public string[,] UrlResults = new string[100,2];
+        public int resultCount = 0;
 
         private void mainSearchLoop()
         {
             isThreadRunning.safeArea((get, set) => { set(true); });
 
             string currentSearch = searchText;
-            currentResultIndex = 0;
-            if (currentSearch == null || currentSearch.Length > 0)
+            resultCount = 0;
+            if (currentSearch == null || currentSearch.Length == 0)
             {
                 stopSearchFlagUp = true;
             }
 
             bool isThreadStopping = stopSearchFlagUp;
-            bool isSearchChanged = (currentSearch == searchText);
+            bool isSearchChanged = (currentSearch != searchText);
 
             while (!isThreadStopping)
             {
@@ -101,7 +103,7 @@ namespace FilteredEdgeBrowser.Utils
                 {
                     foreach (string line in file)
                     {
-                        while (!isThreadStopping && !isSearchChanged)
+                        if (!isThreadStopping && !isSearchChanged)
                         {
 
                             if (line.IndexOf(currentSearch, StringComparison.OrdinalIgnoreCase) > -1)
@@ -109,14 +111,18 @@ namespace FilteredEdgeBrowser.Utils
                                 string[] data = line.Split(new[] { DataSeperator }, StringSplitOptions.RemoveEmptyEntries);
                                 if (data.Length == 2)
                                 {
-                                    UrlResults[currentResultIndex] = data[1];
-                                    currentResultIndex++;
-
-                                    if (currentResultIndex == UrlResults.Length)
+                                    if (resultCount > UrlResults.Length -1)
                                     {
-                                        isThreadStopping = true;
+                                        stopSearchFlagUp = true;
                                         onSearchFinish?.Invoke();
                                     }
+                                    else
+                                    {
+                                        UrlResults[resultCount,0] = data[0]; // name
+                                        UrlResults[resultCount,1] = data[1]; // url
+                                        resultCount++;
+                                    }
+                                   
                                 }
                             }
 
@@ -134,30 +140,46 @@ namespace FilteredEdgeBrowser.Utils
                             _progress = new_progress;
 
                             isThreadStopping = stopSearchFlagUp;
-                            isSearchChanged = (currentSearch == searchText);
+                            isSearchChanged = (currentSearch != searchText);
                         }
-                        break;
+                        else
+                        {
+                            break;
+                        }
                     }
                 }
 
                 if (!isThreadStopping && isSearchChanged)
                 {
                     currentSearch = searchText;
-                    currentResultIndex = 0;
-                    if (currentSearch == null || currentSearch.Length > 0)
+                    resultCount = 0;
+                    if (currentSearch == null || currentSearch.Length == 0)
                     {
                         stopSearchFlagUp = true;
                     }
                 }
+                else
+                {
+                    break; // no need to change search
+                }
             }
 
+            onSearchFinish?.Invoke();
             isThreadRunning.safeArea((get, set) => { set(false); });
+            stopSearchFlagUp = false;
+        }
+
+        public bool isRunning()
+        {
+            bool result = false;
+            isThreadRunning.safeArea((get, set) => { result =  get(); });
+            return result;
         }
 
         public void SaveUrlToFile(string name, string url)
         {
             string toAppend = oneLine(name) + DataSeperator + oneLine(url);
-            File.AppendAllText(myFilePath, toAppend);
+            File.AppendAllLines(myFilePath, new[] { toAppend });
         }
     }
 }
