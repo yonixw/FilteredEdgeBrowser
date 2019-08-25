@@ -110,6 +110,8 @@ namespace FilteredEdgeBrowser
             }
         }
 
+        public HTTPProtocolFilter.FilterPolicy httpPolicy = new HTTPProtocolFilter.FilterPolicy();
+        public TimeBlockFilter.TimeFilterObject timePolicy = new TimeBlockFilter.TimeFilterObject();
 
         public static LogFileHandler historyLog, bookmarkLog;
         private void MainForm_Load(object sender, EventArgs e)
@@ -130,6 +132,9 @@ namespace FilteredEdgeBrowser
 
             historyLog = new LogFileHandler(historyPath);
             bookmarkLog = new LogFileHandler(bookmarkPath);
+
+            httpPolicy.reloadPolicy(FilteredEdgeBrowser.Properties.Settings.Default.WebPolicyPath);
+            timePolicy.reloadPolicy(FilteredEdgeBrowser.Properties.Settings.Default.TimePolicyPath);
         }
     }
 }

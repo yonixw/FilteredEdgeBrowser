@@ -8,22 +8,38 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FilteredEdgeBrowser.Properties
-{
-
-
+namespace FilteredEdgeBrowser.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Yoni\\Desktop\\2019\\FilteredEdgeBrowser\\FilteredEdgeBrowser\\bin\\Debug\\poli" +
+            "cy.json")]
+        public string WebPolicyPath {
+            get {
+                return ((string)(this["WebPolicyPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Yoni\\Desktop\\2019\\FilteredEdgeBrowser\\FilteredEdgeBrowser\\bin\\Debug\\time" +
+            ".json")]
+        public string TimePolicyPath {
+            get {
+                return ((string)(this["TimePolicyPath"]));
             }
         }
     }
