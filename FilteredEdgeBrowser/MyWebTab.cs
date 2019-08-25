@@ -58,23 +58,28 @@ namespace FilteredEdgeBrowser
 
         private void WvMain_DOMContentLoaded(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlDOMContentLoadedEventArgs e)
         {
-            setStatus("DOM Content Loaded");
+            if (e.Uri != null)
+            {
+                setStatus("DOM Content Loaded");
 
-            myHistory.Navigated(e.Uri, wvMain.DocumentTitle);
+                myHistory.Navigated(e.Uri, wvMain.DocumentTitle);
+
+                string newURL = e.Uri.ToString();
+                txtURL.BackColor = (newURL.StartsWith("https")) ? Color.FromArgb(192, 255, 192) : Color.FromArgb(255, 192, 192);
+                txtURL.Text = newURL;
+            }
 
             lblTitle.Text = wvMain.DocumentTitle;
             onTitleChange?.Invoke(myPage, wvMain.DocumentTitle);
-
-            string newURL = e.Uri.ToString();
-            txtURL.BackColor = (newURL.StartsWith("https")) ? Color.FromArgb(192,255,192) : Color.FromArgb(255, 192, 192);
-            txtURL.Text = newURL;
-
         }
         
         private void WvMain_NavigationStarting(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationStartingEventArgs e)
         {
-            // TODO: Filter here
-            setStatus("Navigate to " + e.Uri.ToString());
+            if (e.Uri != null)
+            {
+                // TODO: Filter here
+                setStatus("Navigate to " + e.Uri.ToString());
+            }
         }
 
         private void navigateToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,6 +115,11 @@ namespace FilteredEdgeBrowser
             {
                 wvMain.Navigate(dialog.URL);
             }
+        }
+
+        private void htmlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            wvMain.NavigateToString("<html><head><title>123</title></head><body>Helloe<body></html>");
         }
     }
    

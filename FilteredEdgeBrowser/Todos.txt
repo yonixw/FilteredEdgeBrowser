@@ -8,6 +8,25 @@ In mitm:
 	-whitelist by full path, and make readonly folder for limited-user
 
 
+
+
+Whitelist only those with "eval\function" ? check type=function = "F() {native?}"
+	+ FrameNavigationStarting, + How to get html from all frames (recursive?)
+
+
+
+https://docs.microsoft.com/en-us/uwp/api/windows.web.ui.iwebviewcontrol.framenavigationstarting
+https://docs.microsoft.com/en-us/uwp/api/windows.web.ui.interop.webviewcontrol.framenavigationcompleted
+
+// Invoke script Exception from HRESULT: 0x80020101 ==> JS Syntax error
+//https://suggestqueries.google.com/complete/search?output=toolbar&hl=he&gl=IL&q=%D7%91%D7%99%D7%91
+//https://www.google.com/search?q=gggg
+
+
+
+
+================ Completed
+
 Suggestion Dialog
 	Addressbar is blocked, suggestion in new window (diaglof-singleton)
 	Current address to change
@@ -21,17 +40,7 @@ Suggestion Dialog
 		else
 			google it
 
-Whitelist only those with "eval\function" ? check type=function = "F() {native?}"
-	+ FrameNavigationStarting, + How to get html from all frames (recursive?)
-
 Logs (history\bookmark):
 	- search maximum 100
 	- Reverse read
 	- Save\read from %appdata%
-
-https://docs.microsoft.com/en-us/uwp/api/windows.web.ui.iwebviewcontrol.framenavigationstarting
-https://docs.microsoft.com/en-us/uwp/api/windows.web.ui.interop.webviewcontrol.framenavigationcompleted
-
-// Invoke script Exception from HRESULT: 0x80020101 ==> JS Syntax error
-//https://suggestqueries.google.com/complete/search?output=toolbar&hl=he&gl=IL&q=%D7%91%D7%99%D7%91
-//https://www.google.com/search?q=gggg

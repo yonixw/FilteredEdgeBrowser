@@ -41,6 +41,7 @@
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.wvMain = new Microsoft.Toolkit.Forms.UI.Controls.WebView();
             this.myIcons = new System.Windows.Forms.ImageList(this.components);
+            this.htmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -86,7 +87,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.navigateToolStripMenuItem,
             this.bookmarksToolStripMenuItem,
-            this.changeUrlToolStripMenuItem});
+            this.changeUrlToolStripMenuItem,
+            this.htmlToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(3, 16);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(741, 24);
@@ -147,6 +149,13 @@
             this.myIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.myIcons.Images.SetKeyName(0, "Sekkyumu-Developpers-Internet-History.ico");
             // 
+            // htmlToolStripMenuItem
+            // 
+            this.htmlToolStripMenuItem.Name = "htmlToolStripMenuItem";
+            this.htmlToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.htmlToolStripMenuItem.Text = "Html";
+            this.htmlToolStripMenuItem.Click += new System.EventHandler(this.htmlToolStripMenuItem_Click);
+            // 
             // MyWebTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,5 +191,6 @@
         private System.Windows.Forms.ImageList myIcons;
         private System.Windows.Forms.ToolStripMenuItem bookmarksToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeUrlToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem htmlToolStripMenuItem;
     }
 }
