@@ -58,19 +58,17 @@ namespace FilteredEdgeBrowser
 
         private void WvMain_DOMContentLoaded(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlDOMContentLoadedEventArgs e)
         {
-            if (e.Uri != null)
-            {
-                setStatus("DOM Content Loaded");
+            Uri currentUri = (e.Uri != null) ? e.Uri : new Uri("https://filtered.content/");
 
-                myHistory.Navigated(e.Uri, wvMain.DocumentTitle);
-
-                string newURL = e.Uri.ToString();
-                txtURL.BackColor = (newURL.StartsWith("https")) ? Color.FromArgb(192, 255, 192) : Color.FromArgb(255, 192, 192);
-                txtURL.Text = newURL;
-            }
-
+            myHistory.Navigated(currentUri, wvMain.DocumentTitle);
+            string newURL = currentUri.ToString();
+            txtURL.BackColor = (newURL.StartsWith("https")) ? Color.FromArgb(192, 255, 192) : Color.FromArgb(255, 192, 192);
+            txtURL.Text = newURL;
+            
             lblTitle.Text = wvMain.DocumentTitle;
             onTitleChange?.Invoke(myPage, wvMain.DocumentTitle);
+
+            setStatus("DOM Content Loaded");
         }
         
         private void WvMain_NavigationStarting(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationStartingEventArgs e)

@@ -129,7 +129,7 @@ namespace FilteredEdgeBrowser
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(bookmarkPath));
             }
-
+             
             historyLog = new LogFileHandler(historyPath);
             bookmarkLog = new LogFileHandler(bookmarkPath);
 

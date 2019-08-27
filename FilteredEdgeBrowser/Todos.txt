@@ -1,4 +1,7 @@
-﻿+ Options in policy (seperate):
+﻿referer check.
+periodecly check content? 
+
++ Options in policy (seperate):
 	- Allowed to be referrer
 	- Program whitelist
 		- User whitelist with task in task scheduler.
@@ -23,6 +26,10 @@ https://docs.microsoft.com/en-us/uwp/api/windows.web.ui.interop.webviewcontrol.f
 //https://www.google.com/search?q=gggg
 
 
+// By category (In Future:)
+https://fortiguard.com/webfilter?q=news.ycombinator.com&version=1
+https://fortiguard.com/webfilter/categories
+https://help.fortinet.com/fos50hlp/54/Content/FortiOS/fortigate-security-profiles-54/Web_Filter/FortiGuard%20Web%20Filtering%20Service.htm
 
 
 ================ Completed
