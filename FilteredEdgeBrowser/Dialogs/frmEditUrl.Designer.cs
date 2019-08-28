@@ -109,6 +109,7 @@
             // 
             this.lstHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstHistory.FormattingEnabled = true;
+            this.lstHistory.HorizontalScrollbar = true;
             this.lstHistory.ItemHeight = 18;
             this.lstHistory.Location = new System.Drawing.Point(3, 22);
             this.lstHistory.Name = "lstHistory";
@@ -141,6 +142,7 @@
             // 
             this.lstBookmark.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstBookmark.FormattingEnabled = true;
+            this.lstBookmark.HorizontalScrollbar = true;
             this.lstBookmark.ItemHeight = 18;
             this.lstBookmark.Location = new System.Drawing.Point(3, 22);
             this.lstBookmark.Name = "lstBookmark";
@@ -173,6 +175,7 @@
             // 
             this.lstGoogle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstGoogle.FormattingEnabled = true;
+            this.lstGoogle.HorizontalScrollbar = true;
             this.lstGoogle.ItemHeight = 18;
             this.lstGoogle.Location = new System.Drawing.Point(3, 22);
             this.lstGoogle.Name = "lstGoogle";
