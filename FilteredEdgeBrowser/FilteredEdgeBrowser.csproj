@@ -120,6 +120,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -149,6 +150,7 @@
     <Content Include="Icons\view-refresh-4.png" />
     <Content Include="Icons\view-remove.png" />
     <Content Include="Icons\window-close-2.ico" />
+    <None Include="Resources\BlockedPage.html" />
     <Content Include="Todos.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

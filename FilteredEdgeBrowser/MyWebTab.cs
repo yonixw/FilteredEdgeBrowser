@@ -32,8 +32,31 @@ namespace FilteredEdgeBrowser
             wvMain.NavigationCompleted += WvMain_NavigationCompleted;
             wvMain.DOMContentLoaded += WvMain_DOMContentLoaded;
             wvMain.NewWindowRequested += WvMain_NewWindowRequested;
+            wvMain.FrameNavigationStarting += WvMain_FrameNavigationStarting;
+            wvMain.FrameDOMContentLoaded += WvMain_FrameDOMContentLoaded;
 
             wvMain.Navigate("https://www.google.com");
+        }
+
+        public string formatBlockpage(string reason)
+        {
+            string blockedHTML = FilteredEdgeBrowser.Properties.Resources.BlockedPage;
+            return blockedHTML.Replace("{0}",
+                ("<br/>" + reason )
+                .Replace("<*", "<b>").Replace("*>", "</b>")
+                .Replace("_<", "<u>").Replace(">_", "</u>"));
+        }
+
+        private void WvMain_FrameDOMContentLoaded(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlDOMContentLoadedEventArgs e)
+        {
+            setStatus("Frame content loaded.");
+            isHTMLContentLoaded = true;
+        }
+
+        private void WvMain_FrameNavigationStarting(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationStartingEventArgs e)
+        {
+            setStatus("Frame started navigating");
+            isHTMLContentLoaded = false;
         }
 
         public void setStatus(string text)
@@ -56,9 +79,10 @@ namespace FilteredEdgeBrowser
             e.Handled = true;  
         }
 
+        bool isHTMLContentLoaded = false;
         private void WvMain_DOMContentLoaded(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlDOMContentLoadedEventArgs e)
         {
-            Uri currentUri = (e.Uri != null) ? e.Uri : new Uri("https://filtered.content/");
+            Uri currentUri = (e.Uri != null) ? e.Uri : new Uri("https://blocked.content/");
 
             myHistory.Navigated(currentUri, wvMain.DocumentTitle);
             string newURL = currentUri.ToString();
@@ -68,16 +92,65 @@ namespace FilteredEdgeBrowser
             lblTitle.Text = wvMain.DocumentTitle;
             onTitleChange?.Invoke(myPage, wvMain.DocumentTitle);
 
+            isHTMLContentLoaded = true;
             setStatus("DOM Content Loaded");
         }
         
         private void WvMain_NavigationStarting(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationStartingEventArgs e)
         {
-            if (e.Uri != null)
+            if (e.Uri != null )
             {
-                // TODO: Filter here
-                setStatus("Navigate to " + e.Uri.ToString());
+                string finalReason = "init final";
+                if (MainForm.httpPolicy.getMode() == HTTPProtocolFilter.WorkingMode.ENFORCE)
+                {
+                    e.Cancel = true;
+
+                    // TODO: Filter here
+                    string urlReason = "init main reason";
+                    if (MainForm.httpPolicy.isWhitelistedURL(e.Uri, out urlReason))
+                    {
+                        e.Cancel = false;
+                    }
+                    else // check the referer
+                    {
+                        if (myHistory.Size() > 0) // we add to history after dom completed, 0 mean none
+                        {
+                            string refererReason = "init ref reason";
+                            if (MainForm.httpPolicy.isWhitelistedURL(myHistory.CurrentURI(), out refererReason))
+                            {
+                                if (MainForm.httpPolicy.findAllowedDomain(myHistory.CurrentURI().Host).AllowRefering)
+                                {
+                                    e.Cancel = false;
+                                }
+                                else
+                                {
+                                    finalReason = myHistory.CurrentURL() + " Is not allowed as referer. <br/><br/>" + urlReason;
+                                }
+                            }
+                            else
+                            {
+                                finalReason = "<h3>Target:</h3></br>" 
+                                    + urlReason + "<br /><h3>Referrer:</h3></br>" + refererReason;
+                            }
+                        }
+                        else
+                        {
+                            finalReason = urlReason;
+                        }
+                    }
+                }
+
+                if (e.Cancel)
+                {
+                    wvMain.NavigateToString(formatBlockpage(finalReason));
+                }
+                else
+                {
+                    setStatus("Navigate to " + e.Uri.ToString());
+                }
             }
+
+            if (!e.Cancel) isHTMLContentLoaded = false;
         }
 
         private void navigateToolStripMenuItem_Click(object sender, EventArgs e)

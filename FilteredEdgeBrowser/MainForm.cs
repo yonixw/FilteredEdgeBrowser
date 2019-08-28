@@ -110,8 +110,8 @@ namespace FilteredEdgeBrowser
             }
         }
 
-        public HTTPProtocolFilter.FilterPolicy httpPolicy = new HTTPProtocolFilter.FilterPolicy();
-        public TimeBlockFilter.TimeFilterObject timePolicy = new TimeBlockFilter.TimeFilterObject();
+        public static HTTPProtocolFilter.FilterPolicy httpPolicy = new HTTPProtocolFilter.FilterPolicy();
+        public static TimeBlockFilter.TimeFilterObject timePolicy = new TimeBlockFilter.TimeFilterObject();
 
         public static LogFileHandler historyLog, bookmarkLog;
         private void MainForm_Load(object sender, EventArgs e)

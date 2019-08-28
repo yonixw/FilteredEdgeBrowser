@@ -79,16 +79,23 @@ namespace FilteredEdgeBrowser
             }
         }
 
-        public string CurrentURL()
+
+        public Uri CurrentURI()
         {
             if (Size() > 0)
             {
-                return this[HistoryPosition()].URL.ToString();
+                return this[HistoryPosition()].URL;
             }
             else
             {
-                return "";
+                return null;
             }
+        }
+
+        public string CurrentURL()
+        {
+            Uri uri = CurrentURI();
+            return (uri == null) ? "" : uri.ToString();
         }
     }
 }
