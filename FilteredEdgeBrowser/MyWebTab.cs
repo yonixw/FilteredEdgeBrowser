@@ -198,7 +198,10 @@ namespace FilteredEdgeBrowser
 
         private async void tmrCheckFilter_Tick(object sender, EventArgs e)
         {
-            if (isHTMLContentLoaded)
+            if (
+                isHTMLContentLoaded &&
+                MainForm.httpPolicy.getMode() == HTTPProtocolFilter.WorkingMode.ENFORCE
+                )
             {
                 try
                 {
