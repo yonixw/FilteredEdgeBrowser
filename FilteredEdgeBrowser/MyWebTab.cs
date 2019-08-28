@@ -54,14 +54,14 @@ namespace FilteredEdgeBrowser
 
         private void WvMain_FrameDOMContentLoaded(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlDOMContentLoadedEventArgs e)
         {
-            setStatus("Frame content loaded.");
-            isHTMLContentLoaded = true;
+            //setStatus("Frame content loaded.");
+            //isHTMLContentLoaded = true;
         }
 
         private void WvMain_FrameNavigationStarting(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationStartingEventArgs e)
         {
-            setStatus("Frame started navigating");
-            isHTMLContentLoaded = false;
+            //setStatus("Frame started navigating");
+            //isHTMLContentLoaded = false;
         }
 
         public void setStatus(string text)
@@ -89,6 +89,7 @@ namespace FilteredEdgeBrowser
         private void WvMain_DOMContentLoaded(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlDOMContentLoadedEventArgs e)
         {
             Uri currentUri = (e.Uri != null) ? e.Uri : new Uri("https://blocked.content/");
+            
 
             myHistory.Navigated(currentUri, wvMain.DocumentTitle);
             string newURL = currentUri.ToString();
@@ -98,7 +99,7 @@ namespace FilteredEdgeBrowser
             lblTitle.Text = wvMain.DocumentTitle;
             onTitleChange?.Invoke(myPage, wvMain.DocumentTitle);
 
-            isHTMLContentLoaded = true;
+            isHTMLContentLoaded = (e.Uri != null); // only on real websites
             setStatus("DOM Content Loaded");
         }
         
@@ -195,7 +196,41 @@ namespace FilteredEdgeBrowser
             }
         }
 
-        
+        private async void tmrCheckFilter_Tick(object sender, EventArgs e)
+        {
+            if (isHTMLContentLoaded)
+            {
+                try
+                {
+                    string Header = await wvMain.InvokeScriptAsync("eval", new string[] {
+                        "document.getElementsByTagName(\"head\")[0].innerText"
+                    });
+
+                     string content = await wvMain.InvokeScriptAsync("eval", new string[] {
+                        "document.getElementsByTagName(\"body\")[0].innerText"
+                    });
+
+                    bool isBlocked = false;
+                    string reason = "init body reason";
+                    if (MainForm.httpPolicy.isBodyBlocked(Header, out reason) )
+                    {
+                        reason = "Header is blocked. </br>" + reason;
+                        isBlocked = true;
+                    } 
+                    else if (MainForm.httpPolicy.isBodyBlocked(content, out reason))
+                    {
+                        reason = "Header is blocked. </br>" + reason;
+                        isBlocked = true;
+                    }
+                    
+                    if (isBlocked) { wvMain.NavigateToString(formatBlockpage(reason)); }
+                }
+                catch (Exception ex)
+                {
+                    setStatus("Content filter error: " + ex.Message);
+                }
+            }
+        }
     }
    
 }

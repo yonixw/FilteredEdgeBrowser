@@ -41,6 +41,7 @@
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.wvMain = new Microsoft.Toolkit.Forms.UI.Controls.WebView();
             this.myIcons = new System.Windows.Forms.ImageList(this.components);
+            this.tmrCheckFilter = new System.Windows.Forms.Timer(this.components);
             this.gbMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -147,6 +148,12 @@
             this.myIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.myIcons.Images.SetKeyName(0, "Sekkyumu-Developpers-Internet-History.ico");
             // 
+            // tmrCheckFilter
+            // 
+            this.tmrCheckFilter.Enabled = true;
+            this.tmrCheckFilter.Interval = 2000;
+            this.tmrCheckFilter.Tick += new System.EventHandler(this.tmrCheckFilter_Tick);
+            // 
             // MyWebTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,5 +189,6 @@
         private System.Windows.Forms.ImageList myIcons;
         private System.Windows.Forms.ToolStripMenuItem bookmarksToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeUrlToolStripMenuItem;
+        private System.Windows.Forms.Timer tmrCheckFilter;
     }
 }
