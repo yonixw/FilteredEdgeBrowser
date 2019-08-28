@@ -18,9 +18,13 @@ namespace FilteredEdgeBrowser
         public delegate void titleEvent(TabPage page, string title);
         public event titleEvent onTitleChange;
 
+        public delegate void newPage(Uri referer, Uri url);
+        public event newPage onNewPage;
 
-        public MyWebTab()
+        string initialUrl = "";
+        public MyWebTab(string url = "https://www.google.com")
         {
+            initialUrl = url;
             InitializeComponent();
         }
 
@@ -34,8 +38,9 @@ namespace FilteredEdgeBrowser
             wvMain.NewWindowRequested += WvMain_NewWindowRequested;
             wvMain.FrameNavigationStarting += WvMain_FrameNavigationStarting;
             wvMain.FrameDOMContentLoaded += WvMain_FrameDOMContentLoaded;
+            
 
-            wvMain.Navigate("https://www.google.com");
+            wvMain.Navigate(initialUrl);
         }
 
         public string formatBlockpage(string reason)
@@ -76,7 +81,8 @@ namespace FilteredEdgeBrowser
 
         private void WvMain_NewWindowRequested(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNewWindowRequestedEventArgs e)
         {
-            e.Handled = true;  
+            onNewPage?.Invoke(e.Referrer, e.Uri);   
+            e.Handled = true;
         }
 
         bool isHTMLContentLoaded = false;
@@ -142,6 +148,7 @@ namespace FilteredEdgeBrowser
 
                 if (e.Cancel)
                 {
+                    myHistory.Navigated(e.Uri, "Page Blocked");
                     wvMain.NavigateToString(formatBlockpage(finalReason));
                 }
                 else
@@ -188,10 +195,7 @@ namespace FilteredEdgeBrowser
             }
         }
 
-        private void htmlToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            wvMain.NavigateToString("<html><head><title>123</title></head><body>Helloe<body></html>");
-        }
+        
     }
    
 }

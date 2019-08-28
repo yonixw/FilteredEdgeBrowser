@@ -14,24 +14,7 @@ using System.Xml.Linq;
 
 namespace FilteredEdgeBrowser.Dialogs
 {
-    public class UrlItem
-    {
-        string _url;
-        string _name;
-
-        public UrlItem(string name, string url)
-        {
-            _name = name;
-            _url = url;
-        }
-
-        public override string ToString()
-        {
-            return frmTabHistory.formatURLHelper(_name, _url);
-        }
-
-        public string URL() { return _url; }
-    }
+    
 
     public partial class frmEditUrl : Form
     {
@@ -179,5 +162,33 @@ namespace FilteredEdgeBrowser.Dialogs
                 ReturnURL((lst.SelectedItem as UrlItem).URL());
             }
         }
+
+        private void lstHTTP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBox lst = sender as ListBox;
+            if (lst.SelectedIndex > -1)
+            {
+                ReturnURL(lst.SelectedItem as string);
+            }
+        }
+    }
+
+    public class UrlItem
+    {
+        string _url;
+        string _name;
+
+        public UrlItem(string name, string url)
+        {
+            _name = name;
+            _url = url;
+        }
+
+        public override string ToString()
+        {
+            return frmTabHistory.formatURLHelper(_name, _url);
+        }
+
+        public string URL() { return _url; }
     }
 }

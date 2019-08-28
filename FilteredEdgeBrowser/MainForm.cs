@@ -29,19 +29,32 @@ namespace FilteredEdgeBrowser
             }
         }
 
-        private void addTabToolStripMenuItem_Click(object sender, EventArgs e)
+
+        void addNewTab (string url = "https://www.google.com")
         {
             TabPage tab = new TabPage("Loading...");
 
-            MyWebTab view = new MyWebTab();
+            MyWebTab view = new MyWebTab(url);
             view.SetToolbarVisibility(shouldHide);
             view.Dock = DockStyle.Fill;
             view.setMyPage(tab);
             view.onTitleChange += View_onTitleChange;
+            view.onNewPage += View_onNewPage;
 
             tab.Controls.Add(view);
 
             tabViews.TabPages.Add(tab);
+        }
+
+        private void addTabToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addNewTab();
+        }
+
+        private void View_onNewPage(Uri referer, Uri url)
+        {
+            // Todo: User referer for filtering
+            addNewTab(url.ToString());
         }
 
         private void View_onTitleChange(TabPage page, string title)

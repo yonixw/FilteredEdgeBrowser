@@ -152,6 +152,7 @@ namespace FilteredEdgeBrowser.Utils
                 if (!isThreadStopping && isSearchChanged)
                 {
                     currentSearch = searchText;
+                    isSearchChanged = false;
                     resultCount = 0;
                     if (currentSearch == null || currentSearch.Length == 0)
                     {

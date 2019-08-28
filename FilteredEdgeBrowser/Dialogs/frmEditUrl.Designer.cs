@@ -33,20 +33,20 @@
             this.txtFreeStyle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lstHistory = new System.Windows.Forms.ListBox();
+            this.pbHistory = new System.Windows.Forms.ProgressBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lstBookmark = new System.Windows.Forms.ListBox();
+            this.pbBookmark = new System.Windows.Forms.ProgressBar();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lstGoogle = new System.Windows.Forms.ListBox();
+            this.pbSuggestion = new System.Windows.Forms.ProgressBar();
             this.lstHTTP = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.pbSuggestion = new System.Windows.Forms.ProgressBar();
-            this.lstGoogle = new System.Windows.Forms.ListBox();
-            this.pbHistory = new System.Windows.Forms.ProgressBar();
-            this.pbBookmark = new System.Windows.Forms.ProgressBar();
-            this.lstBookmark = new System.Windows.Forms.ListBox();
-            this.lstHistory = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -105,6 +105,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "History search";
             // 
+            // lstHistory
+            // 
+            this.lstHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstHistory.FormattingEnabled = true;
+            this.lstHistory.ItemHeight = 18;
+            this.lstHistory.Location = new System.Drawing.Point(3, 22);
+            this.lstHistory.Name = "lstHistory";
+            this.lstHistory.Size = new System.Drawing.Size(577, 288);
+            this.lstHistory.TabIndex = 14;
+            this.lstHistory.SelectedIndexChanged += new System.EventHandler(this.lstHistory_SelectedIndexChanged);
+            // 
+            // pbHistory
+            // 
+            this.pbHistory.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbHistory.Location = new System.Drawing.Point(3, 310);
+            this.pbHistory.Name = "pbHistory";
+            this.pbHistory.Size = new System.Drawing.Size(577, 23);
+            this.pbHistory.TabIndex = 13;
+            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -117,6 +136,25 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bookmark Search";
+            // 
+            // lstBookmark
+            // 
+            this.lstBookmark.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstBookmark.FormattingEnabled = true;
+            this.lstBookmark.ItemHeight = 18;
+            this.lstBookmark.Location = new System.Drawing.Point(3, 22);
+            this.lstBookmark.Name = "lstBookmark";
+            this.lstBookmark.Size = new System.Drawing.Size(583, 294);
+            this.lstBookmark.TabIndex = 14;
+            this.lstBookmark.SelectedIndexChanged += new System.EventHandler(this.lstBookmark_SelectedIndexChanged);
+            // 
+            // pbBookmark
+            // 
+            this.pbBookmark.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbBookmark.Location = new System.Drawing.Point(3, 316);
+            this.pbBookmark.Name = "pbBookmark";
+            this.pbBookmark.Size = new System.Drawing.Size(583, 23);
+            this.pbBookmark.TabIndex = 13;
             // 
             // groupBox3
             // 
@@ -131,6 +169,25 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Google suggestion";
             // 
+            // lstGoogle
+            // 
+            this.lstGoogle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstGoogle.FormattingEnabled = true;
+            this.lstGoogle.ItemHeight = 18;
+            this.lstGoogle.Location = new System.Drawing.Point(3, 22);
+            this.lstGoogle.Name = "lstGoogle";
+            this.lstGoogle.Size = new System.Drawing.Size(577, 288);
+            this.lstGoogle.TabIndex = 13;
+            this.lstGoogle.SelectedIndexChanged += new System.EventHandler(this.lstGoogle_SelectedIndexChanged);
+            // 
+            // pbSuggestion
+            // 
+            this.pbSuggestion.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbSuggestion.Location = new System.Drawing.Point(3, 310);
+            this.pbSuggestion.Name = "pbSuggestion";
+            this.pbSuggestion.Size = new System.Drawing.Size(577, 23);
+            this.pbSuggestion.TabIndex = 12;
+            // 
             // lstHTTP
             // 
             this.lstHTTP.FormattingEnabled = true;
@@ -139,6 +196,7 @@
             this.lstHTTP.Name = "lstHTTP";
             this.lstHTTP.Size = new System.Drawing.Size(597, 58);
             this.lstHTTP.TabIndex = 8;
+            this.lstHTTP.SelectedIndexChanged += new System.EventHandler(this.lstHTTP_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -193,63 +251,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Bookmark";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // pbSuggestion
-            // 
-            this.pbSuggestion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pbSuggestion.Location = new System.Drawing.Point(3, 310);
-            this.pbSuggestion.Name = "pbSuggestion";
-            this.pbSuggestion.Size = new System.Drawing.Size(577, 23);
-            this.pbSuggestion.TabIndex = 12;
-            // 
-            // lstGoogle
-            // 
-            this.lstGoogle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstGoogle.FormattingEnabled = true;
-            this.lstGoogle.ItemHeight = 18;
-            this.lstGoogle.Location = new System.Drawing.Point(3, 22);
-            this.lstGoogle.Name = "lstGoogle";
-            this.lstGoogle.Size = new System.Drawing.Size(577, 288);
-            this.lstGoogle.TabIndex = 13;
-            this.lstGoogle.SelectedIndexChanged += new System.EventHandler(this.lstGoogle_SelectedIndexChanged);
-            // 
-            // pbHistory
-            // 
-            this.pbHistory.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pbHistory.Location = new System.Drawing.Point(3, 310);
-            this.pbHistory.Name = "pbHistory";
-            this.pbHistory.Size = new System.Drawing.Size(577, 23);
-            this.pbHistory.TabIndex = 13;
-            // 
-            // pbBookmark
-            // 
-            this.pbBookmark.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pbBookmark.Location = new System.Drawing.Point(3, 316);
-            this.pbBookmark.Name = "pbBookmark";
-            this.pbBookmark.Size = new System.Drawing.Size(583, 23);
-            this.pbBookmark.TabIndex = 13;
-            // 
-            // lstBookmark
-            // 
-            this.lstBookmark.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstBookmark.FormattingEnabled = true;
-            this.lstBookmark.ItemHeight = 18;
-            this.lstBookmark.Location = new System.Drawing.Point(3, 22);
-            this.lstBookmark.Name = "lstBookmark";
-            this.lstBookmark.Size = new System.Drawing.Size(583, 294);
-            this.lstBookmark.TabIndex = 14;
-            this.lstBookmark.SelectedIndexChanged += new System.EventHandler(this.lstBookmark_SelectedIndexChanged);
-            // 
-            // lstHistory
-            // 
-            this.lstHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstHistory.FormattingEnabled = true;
-            this.lstHistory.ItemHeight = 18;
-            this.lstHistory.Location = new System.Drawing.Point(3, 22);
-            this.lstHistory.Name = "lstHistory";
-            this.lstHistory.Size = new System.Drawing.Size(577, 288);
-            this.lstHistory.TabIndex = 14;
-            this.lstHistory.SelectedIndexChanged += new System.EventHandler(this.lstHistory_SelectedIndexChanged);
             // 
             // frmEditUrl
             // 
