@@ -179,7 +179,7 @@ namespace FilteredEdgeBrowser.Utils
 
         public void SaveUrlToFile(string name, string url)
         {
-            string toAppend = oneLine(name) + DataSeperator + oneLine(url);
+            string toAppend = "[" + DateTime.Now.ToString() + "] " +  oneLine(name) + DataSeperator + oneLine(url);
             File.AppendAllLines(myFilePath, new[] { toAppend });
         }
     }
