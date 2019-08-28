@@ -214,7 +214,7 @@ namespace FilteredEdgeBrowser
                     string reason = "init body reason";
                     if (MainForm.httpPolicy.isBodyBlocked(Header, out reason) )
                     {
-                        reason = "Header is blocked. </br>" + reason;
+                        reason = "Body is blocked. </br>" + reason;
                         isBlocked = true;
                     } 
                     else if (MainForm.httpPolicy.isBodyBlocked(content, out reason))

@@ -1,5 +1,5 @@
-﻿referer check.
-periodecly check content? 
+﻿+ referer check.
++ periodecly check content? 
 
 + Options in policy (seperate):
 	- Allowed to be referrer
